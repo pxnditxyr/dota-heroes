@@ -28,6 +28,12 @@ export const Navbar = () => {
             <div>
                 <NavLink
                     exact
+                    to="/search"
+                >
+                    Search
+                </NavLink>
+                <NavLink
+                    exact
                     to="/login"
                 >
                     Logout
