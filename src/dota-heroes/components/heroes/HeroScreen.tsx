@@ -9,22 +9,16 @@ import { useMemo } from 'react';
 
 export const HeroScreen = () => {
 
-    console.log( "Holo" );
-
     const params = useParams();
     const navigate = useNavigate();
 
     const hero : Hero = useMemo( () => getHeroById( params.heroId || "not-found" ), [ params.heroId ] );
-    console.log( hero );
 
     if ( hero.id === "not-found" )
         return <Navigate to="/" />
 
     const handleBack = () => {
-        if ( navigate.length < 3 )
-            navigate( "/" )
-        else
-            navigate( -1 );
+        navigate( -1 );
     }
     
     return (
@@ -39,5 +33,5 @@ export const HeroScreen = () => {
 
             <button onClick={ handleBack }> Back </button>
         </>
-    )
-}
+    );
+};
