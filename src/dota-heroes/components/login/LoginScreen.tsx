@@ -7,7 +7,13 @@ export const LoginScreen = () => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        navigate( "/" );
+        
+        const lastPath : string = localStorage.getItem( 'lastPath' ) || "/";
+
+        navigate( lastPath, {
+            replace: true
+        });
+
         const user : User = {
             id: "1",
             name: "Yuki",
