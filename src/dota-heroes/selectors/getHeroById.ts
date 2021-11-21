@@ -1,7 +1,7 @@
 import { heroes } from '../data/heroes';
 import { Hero } from '../interfaces/interfaces';
 
-export const getHeroById : ( id : string ) => Hero = ( id : string ) => {
+export const getHeroById = ( id : string ) : Hero => {
     const findedHero : Hero | undefined = heroes.find( hero => hero.id === id );
 
     const hero : Hero = findedHero !== undefined ? findedHero : {
@@ -12,5 +12,6 @@ export const getHeroById : ( id : string ) => Hero = ( id : string ) => {
         'attack': "",
         'information': "",
     };
+
     return hero;
 }

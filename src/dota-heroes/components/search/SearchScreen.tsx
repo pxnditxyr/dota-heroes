@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useLocation, RouteComponentProps } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import queryString from 'query-string';
 
 import { HeroCard } from '../heroes/HeroCard';
@@ -11,13 +11,10 @@ interface FormData {
     searchText: string;
 };
 
-interface Props extends RouteComponentProps {
-
-};
-
-export const SearchScreen : React.FC<Props> = ({ history }) => {
+export const SearchScreen = () => {
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     const { q } = queryString.parse( location.search )
     const initialSearchText : string = ( q ) ? q.toString() : "";
@@ -30,7 +27,7 @@ export const SearchScreen : React.FC<Props> = ({ history }) => {
 
     const handleSearch = ( event : React.FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
-        history.push( `?q=${ searchText }` );
+        navigate( `?q=${ searchText }` );
     }
 
     return (

@@ -1,13 +1,21 @@
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { User } from '../../interfaces/interfaces';
 
-interface Props extends RouteComponentProps<any> {
-
-};
-
-export const LoginScreen : React.FC<Props> = ({ history }) => {
+export const LoginScreen = () => {
+    const { authLogin } = useAuth();
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        history.replace( "/" );
+        navigate( "/" );
+        const user : User = {
+            id: "1",
+            name: "Yuki",
+            email: "pnxditxyr@gmail.com",
+            password: "MD5",
+            logged: true,
+        }
+        authLogin( user );
     }
 
     return (

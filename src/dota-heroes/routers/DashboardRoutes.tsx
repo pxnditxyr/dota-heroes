@@ -1,7 +1,6 @@
 import {
-    Redirect,
     Route,
-    Switch,
+    Routes,
 } from 'react-router-dom';
 
 import { Navbar } from '../components/ui/Navbar';
@@ -15,14 +14,15 @@ export const DashboardRoutes = () => {
     return (
         <>
             <Navbar />
-            <Switch>
-                <Route exact path="/strenght" component={ StrengthScreen } />
-                <Route exact path="/agility" component={ AgilityScreen } />
-                <Route exact path="/intelligence" component={ IntelligenceScreen } />
-                <Route exact path="/search" component={ SearchScreen } />
-                <Route exact path="/hero/:heroId" component={ HeroScreen } />
-                <Redirect to="/strenght" />
-            </Switch>
+            <Routes>
+                <Route path="strenght" element={ <StrengthScreen /> } />
+                <Route path="agility" element={ <AgilityScreen /> } />
+                <Route path="intelligence" element={ <IntelligenceScreen /> } />
+                <Route path="search" element={ <SearchScreen /> } />
+                <Route path="hero/:heroId" element={ <HeroScreen /> } />
+
+                <Route path="/" element={ <StrengthScreen /> } />
+            </Routes>
         </>
     )
 }

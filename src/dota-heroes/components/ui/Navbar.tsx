@@ -1,25 +1,29 @@
-import {
-    NavLink,
-} from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+
 
 export const Navbar = () => {
+    const { user, authLogout } = useAuth();
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        navigate( '/login' );
+        authLogout( false );
+    }
+
     return (
         <nav>
             <div>
                 <NavLink
-                    exact
                     to="/strenght"
                 >
                     Strenght
                 </NavLink>
                 <NavLink
-                    exact
                     to="/agility"
                 >
                     Agility
                 </NavLink>
                 <NavLink
-                    exact
                     to="/intelligence"
                 >
                     Intelligence
@@ -27,17 +31,14 @@ export const Navbar = () => {
             </div>
             <div>
                 <NavLink
-                    exact
                     to="/search"
                 >
                     Search
                 </NavLink>
-                <NavLink
-                    exact
-                    to="/login"
-                >
+                <span> { user.name } </span>
+                <button onClick={ handleLogout }>
                     Logout
-                </NavLink>
+                </button>
             </div>
         </nav>
     );

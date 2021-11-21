@@ -35,7 +35,7 @@ export const HeroCard : React.FC<Props> = ({
                 {
                     cardType === "small"
                     &&
-                    <Link to={ `./hero/${ id }` }>
+                    <Link to={ `/hero/${ id }` }>
                         More
                     </Link>
                 }

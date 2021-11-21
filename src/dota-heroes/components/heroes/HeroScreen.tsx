@@ -1,4 +1,4 @@
-import { Redirect, RouteComponentProps, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 import { HeroCard } from './HeroCard';
 
@@ -6,33 +6,37 @@ import { Hero } from '../../interfaces/interfaces';
 import { getHeroById } from '../../selectors/getHeroById'
 import { useMemo } from 'react';
 
-interface Props extends RouteComponentProps {
 
-}
+export const HeroScreen = () => {
 
-export const HeroScreen : React.FC<Props> = ({ history }) => {
-    const { heroId } : { heroId : string } = useParams();
+    console.log( "Holo" );
 
-    const hero : Hero = useMemo( () => getHeroById( heroId ), [ heroId ] )
+    const params = useParams();
+    const navigate = useNavigate();
+
+    const hero : Hero = useMemo( () => getHeroById( params.heroId || "not-found" ), [ params.heroId ] );
+    console.log( hero );
 
     if ( hero.id === "not-found" )
-        return <Redirect to="/" />
+        return <Navigate to="/" />
 
     const handleBack = () => {
-        if ( history.length < 3 ) 
-            history.push( "/" )
+        if ( navigate.length < 3 )
+            navigate( "/" )
         else
-            history.goBack();
+            navigate( -1 );
     }
     
     return (
         <>
             <h1> Hero Screen </h1>
             <hr />
+
             <HeroCard 
                 { ...hero }
                 cardType="big"
             />
+
             <button onClick={ handleBack }> Back </button>
         </>
     )
