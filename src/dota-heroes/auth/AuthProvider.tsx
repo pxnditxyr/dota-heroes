@@ -36,6 +36,9 @@ export const AuthProvider = ( { children }: AuthProviderProps ) => {
     const authLogout = ( logged : boolean ) => {
         dispatch({ type: "authLogout", payload: { logged } });
     };
+    const auth = () => {
+        dispatch({ type: "auth", payload: {} })
+    }
 
     return (
         <AuthContext.Provider
@@ -43,6 +46,7 @@ export const AuthProvider = ( { children }: AuthProviderProps ) => {
                 user,
                 authLogin,
                 authLogout,
+                auth,
             }}
         >
             { children }

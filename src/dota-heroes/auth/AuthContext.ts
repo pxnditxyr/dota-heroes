@@ -6,6 +6,7 @@ export type AuthContextProps = {
     user: User;
     authLogin: ( user : User ) => void;
     authLogout: ( logged : boolean ) => void;
+    auth: () => void;
 };
 
 export const AuthContext = createContext<AuthContextProps>( {} as AuthContextProps );

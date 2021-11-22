@@ -3,6 +3,7 @@ import { User } from '../interfaces/interfaces';
 type authAction =
     | { type: "authLogin", payload: User }
     | { type: "authLogout", payload: { logged : boolean } }
+    | { type: "auth", payload: {} }
 
 export const authReducer = ( state : User, action : authAction ) : User => {
 
@@ -15,8 +16,11 @@ export const authReducer = ( state : User, action : authAction ) : User => {
 
         case "authLogout":
             return {
-                ...state,
-                logged: false
+                id: "",
+                name: "",
+                email: "",
+                password: "",
+                logged: false,
             }
         default: 
             return state;
