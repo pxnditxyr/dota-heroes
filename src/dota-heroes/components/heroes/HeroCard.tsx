@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
+
 
 interface Props {
     id: string;
@@ -9,6 +10,8 @@ interface Props {
     information: string;
     cardType: string;
 }
+
+const HERO_IMAGES = require.context( "../../assets/images/heroes", true );
 
 export const HeroCard : React.FC<Props> = ({
     id,
@@ -22,7 +25,9 @@ export const HeroCard : React.FC<Props> = ({
     return (
         <article className={ `card ${ cardType }` }>
             <section className="card__header">
-                <img src={ `${ cardType === "big" ? "." : "" }./assets/images/heroes/${ id }.jpg` } alt={ `${ id }` } />
+                <div className="card__image">
+                    <img src={ HERO_IMAGES( `./${ id }.jpg` ).default } alt={ `${ id }` } />
+                </div>
             </section>
             <section className="card__body">
                 <h3> { name } </h3>
