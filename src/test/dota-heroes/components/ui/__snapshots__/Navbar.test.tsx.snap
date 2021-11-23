@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <Navbar /> Must show correctly 1`] = `
+<nav>
+  <div>
+    <a
+      className=""
+      href="/strenght"
+      onClick={[Function]}
+    >
+      Strenght
+    </a>
+    <a
+      className=""
+      href="/agility"
+      onClick={[Function]}
+    >
+      Agility
+    </a>
+    <a
+      className=""
+      href="/intelligence"
+      onClick={[Function]}
+    >
+      Intelligence
+    </a>
+  </div>
+  <div>
+    <a
+      className=""
+      href="/search"
+      onClick={[Function]}
+    >
+      Search
+    </a>
+    <span>
+       
+      Yuki
+       
+    </span>
+    <button
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
+</nav>
+`;
